@@ -16,6 +16,11 @@ const store = new Map();
 // Serve static frontend
 app.use('/', express.static(path.join(__dirname, '..', 'public')));
 
+// Root page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
 // API: create a share
 app.post('/api/share', (req, res) => {
   const { lat, lng, label, ttlMinutes } = req.body;
