@@ -3,33 +3,55 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>Berbagi Lokasi</title>
+		<title>Project GPS – Berbagi Lokasi</title>
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-		<style>
-			html,body,#map { height: 100%; margin: 0; padding: 0; }
-			#controls { position: absolute; top: 10px; left: 10px; z-index: 1000; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-			.small { font-size: 0.9rem }
-			label { display:block; margin-top:6px; }
-			input[type="number"] { width: 120px; }
-		</style>
+		<link rel="stylesheet" href="/styles.css" />
 	</head>
 	<body>
-		<div id="controls">
-			<div id="shareForm">
-				<div class="small">Bagikan lokasi Anda:</div>
-				<label>
-					TTL (menit, opsional):
-					<input id="ttl" type="number" min="1" placeholder="60" />
-				</label>
-				<button id="shareBtn">Bagikan lokasi sekarang</button>
-				<div id="result" class="small"></div>
-			</div>
-			<div id="viewInfo" style="display:none">
-				<div class="small">Menampilkan lokasi dibagikan.</div>
-				<div id="expiryInfo" class="small"></div>
-			</div>
+		<div class="app">
+			<header class="header">
+				<div class="logo" aria-hidden="true">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M12 2C7.582 2 4 5.582 4 10c0 6 8 12 8 12s8-6 8-12c0-4.418-3.582-8-8-8zm0 10a2 2 0 110-4 2 2 0 010 4z" fill="white"/>
+					</svg>
+				</div>
+				<div>
+					<div class="title">Project GPS</div>
+					<div class="subtitle">Berbagi lokasi dengan cepat dan aman</div>
+				</div>
+				<div class="spacer"></div>
+			</header>
+
+			<main class="main">
+				<div class="controls">
+					<div class="card" id="shareForm">
+						<h3>Bagikan Lokasi</h3>
+						<div class="small">Buat tautan lokasi saat ini dan bagikan.</div>
+						<div class="input-row" style="margin-top:8px">
+							<label class="label" for="ttl">TTL (menit, opsional)</label>
+							<input class="input" id="ttl" type="number" min="1" placeholder="60" />
+						</div>
+						<div style="display:flex; gap:10px; margin-top:10px">
+							<button class="button" id="shareBtn">Bagikan lokasi sekarang</button>
+							<button class="button secondary" id="copyBtn" type="button" onclick="(function(){const el=document.getElementById('result');const url=el?.textContent?.trim();if(url){navigator.clipboard.writeText(url).then(()=>{el.dataset.copied='true'; setTimeout(()=>{delete el.dataset.copied;},1200);});}})()">Salin tautan</button>
+						</div>
+						<div id="result" class="result small" style="margin-top:10px"></div>
+					</div>
+
+					<div class="card" id="viewInfo" style="display:none">
+						<h3>Mode Tampilan</h3>
+						<div class="small">Menampilkan lokasi yang telah dibagikan.</div>
+						<div id="expiryInfo" class="small" style="margin-top:6px"></div>
+					</div>
+				</div>
+				<div id="map"></div>
+			</main>
+
+			<footer class="footer">
+				<span>© 2025 Project GPS</span>
+				<span>Made with Leaflet • <a href="https://leafletjs.com" target="_blank" rel="noreferrer">Docs</a></span>
+			</footer>
 		</div>
-		<div id="map"></div>
 
 		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 		<script src="/app.js"></script>
