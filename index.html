@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Berbagi Lokasi</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+		<style>
+			html,body,#map { height: 100%; margin: 0; padding: 0; }
+			#controls { position: absolute; top: 10px; left: 10px; z-index: 1000; background: rgba(255,255,255,0.95); padding: 10px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+			.small { font-size: 0.9rem }
+			label { display:block; margin-top:6px; }
+			input[type="number"] { width: 120px; }
+		</style>
+	</head>
+	<body>
+		<div id="controls">
+			<div id="shareForm">
+				<div class="small">Bagikan lokasi Anda:</div>
+				<label>
+					TTL (menit, opsional):
+					<input id="ttl" type="number" min="1" placeholder="60" />
+				</label>
+				<button id="shareBtn">Bagikan lokasi sekarang</button>
+				<div id="result" class="small"></div>
+			</div>
+			<div id="viewInfo" style="display:none">
+				<div class="small">Menampilkan lokasi dibagikan.</div>
+				<div id="expiryInfo" class="small"></div>
+			</div>
+		</div>
+		<div id="map"></div>
+
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+		<script src="/app.js"></script>
+	</body>
+	</html>
