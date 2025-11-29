@@ -14,11 +14,21 @@ app.use(express.urlencoded({ extended: false }));
 const store = new Map();
 
 // Serve static frontend
-app.use('/', express.static(path.join(__dirname, '..', 'public')));
+const publicDir = path.join(__dirname, '..', 'public');
+app.use(express.static(publicDir, { index: false }));
+app.use('/public', express.static(publicDir));
 
 // Root page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
+app.get('/index.html', (req, res) => {
+  res.redirect(301, '/');
+});
+
+app.get('/auth.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'auth.html'));
 });
 
 // API: create a share
@@ -54,7 +64,7 @@ app.get('/api/share/:id', (req, res) => {
 
 // Fallback to frontend for share pages
 app.get('/share/:id', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 app.listen(PORT, () => {

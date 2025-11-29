@@ -77,6 +77,7 @@ body {
 }
 .card h3 { margin: 0 0 8px; font-size: 1rem; }
 .small { color: var(--muted); font-size: 0.92rem; }
+.muted { color: var(--muted); }
 .label { color: var(--muted); font-size: 0.9rem; }
 
 .input-row { display: grid; grid-template-columns: 1fr 120px; gap: 10px; align-items: center; }
@@ -119,6 +120,13 @@ body {
   border-radius: 10px;
 }
 
+.history-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 .footer {
   display: flex;
   align-items: center;
@@ -133,4 +141,23 @@ body {
 
 @media (max-width: 768px) {
   .controls { width: calc(100% - 32px); left: 16px; right: 16px; }
+}
+
+/* Auth page layout */
+.auth-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 0;
+}
+
+.auth-main .controls {
+  position: static;
+  width: min(420px, 100%);
+  margin: 0 auto;
+}
+
+.auth-main .card {
+  width: 100%;
 }

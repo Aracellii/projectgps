@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Login/Register – Project GPS</title>
+		<link rel="stylesheet" href="./public/styles.css" />
+	</head>
+	<body>
+		<div class="app">
+			<header class="header">
+				<div class="logo" aria-hidden="true">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M12 2C7.582 2 4 5.582 4 10c0 6 8 12 8 12s8-6 8-12c0-4.418-3.582-8-8-8zm0 10a2 2 0 110-4 2 2 0 010 4z" fill="white"/>
+					</svg>
+				</div>
+				<div>
+					<div class="title">Project GPS</div>
+					<div class="subtitle">Login atau Register</div>
+				</div>
+				<div class="spacer"></div>
+			</header>
+
+			<main class="main auth-main">
+				<div class="controls">
+					<div class="card" id="loginForm">
+						<h3>Login</h3>
+						<div class="small">Masuk dengan akun Anda.</div>
+						<div class="input-row" style="margin-top:8px">
+							<label class="label" for="loginEmail">Email</label>
+							<input class="input" id="loginEmail" type="email" placeholder="email@example.com" />
+						</div>
+						<div class="input-row">
+							<label class="label" for="loginPassword">Password</label>
+							<input class="input" id="loginPassword" type="password" placeholder="password" />
+						</div>
+						<div style="display:flex; gap:10px; margin-top:10px">
+							<button class="button" id="loginBtn">Login</button>
+							<button class="button secondary" id="switchToRegister">Ke Register</button>
+						</div>
+						<div id="loginResult" class="result small" style="margin-top:10px"></div>
+					</div>
+
+					<div class="card" id="registerForm" style="display:none">
+						<h3>Register</h3>
+						<div class="small">Buat akun baru.</div>
+						<div class="input-row" style="margin-top:8px">
+							<label class="label" for="registerEmail">Email</label>
+							<input class="input" id="registerEmail" type="email" placeholder="email@example.com" />
+						</div>
+						<div class="input-row">
+							<label class="label" for="registerPassword">Password</label>
+							<input class="input" id="registerPassword" type="password" placeholder="password" />
+						</div>
+						<div class="input-row">
+							<label class="label" for="registerName">Nama</label>
+							<input class="input" id="registerName" type="text" placeholder="Nama lengkap" />
+						</div>
+						<div style="display:flex; gap:10px; margin-top:10px">
+							<button class="button" id="registerBtn">Register</button>
+							<button class="button secondary" id="switchToLogin">Ke Login</button>
+						</div>
+						<div id="registerResult" class="result small" style="margin-top:10px"></div>
+					</div>
+				</div>
+			</main>
+
+			<footer class="footer">
+				<span>© 2025 Project GPS</span>
+				<span>Made with Supabase • <a href="https://supabase.com" target="_blank" rel="noreferrer">Docs</a></span>
+			</footer>
+		</div>
+
+		<script>
+			// Supabase credentials
+			window.SUPABASE_URL = 'https://olkpsnalkfosbjxomuap.supabase.co';
+			window.SUPABASE_ANON_KEY = 'sb_publishable_eUGGayP0jhOqXqp4LD0QFQ_6UwXAFYN';
+		</script>
+		<script src="./public/auth.js"></script>
+	</body>
+	</html>

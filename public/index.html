@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Project GPS – Berbagi Lokasi</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+		<link rel="stylesheet" href="./public/styles.css" />
+	</head>
+	<body>
+		<div class="app">
+			<header class="header">
+				<div class="logo" aria-hidden="true">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M12 2C7.582 2 4 5.582 4 10c0 6 8 12 8 12s8-6 8-12c0-4.418-3.582-8-8-8zm0 10a2 2 0 110-4 2 2 0 010 4z" fill="white"/>
+					</svg>
+				</div>
+				<div>
+					<div class="title">Project GPS</div>
+					<div class="subtitle">Berbagi lokasi dengan cepat dan aman</div>
+				</div>
+				<div class="spacer"></div>
+			</header>
+
+			<main class="main">
+				<div class="controls">
+					<div class="card" id="sessionCard" style="display:none">
+						<h3>Sesi Aktif</h3>
+						<div class="small">Masuk sebagai <span id="userEmail">-</span></div>
+						<div style="display:flex; gap:10px; margin-top:10px">
+							<a class="button secondary" href="auth.html">Kelola Akun</a>
+							<button class="button" id="logoutBtn" type="button">Logout</button>
+						</div>
+					</div>
+
+					<div class="card" id="shareForm" style="display:none">
+						<h3>Bagikan Lokasi</h3>
+						<div class="small">Buat tautan lokasi saat ini dan bagikan.</div>
+						<div class="input-row" style="margin-top:8px">
+							<label class="label" for="ttl">TTL (menit, opsional)</label>
+							<input class="input" id="ttl" type="number" min="1" placeholder="60" />
+						</div>
+						<div style="display:flex; gap:10px; margin-top:10px">
+							<button class="button" id="shareBtn">Bagikan lokasi sekarang</button>
+							<button class="button secondary" id="logoutBtn">Logout</button>
+						</div>
+						<div id="result" class="result small" style="margin-top:10px"></div>
+					</div>
+
+					<div class="card" id="viewInfo" style="display:none">
+						<h3>Mode Tampilan</h3>
+						<div class="small">Menampilkan lokasi yang telah dibagikan.</div>
+						<div id="expiryInfo" class="small" style="margin-top:6px"></div>
+					</div>
+				</div>
+				<div id="map"></div>
+			</main>
+
+		</div>
+
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+		<script>
+			// Set Supabase credentials (replace URL with your project URL: https://<ref>.supabase.co)
+			window.SUPABASE_URL = 'https://olkpsnalkfosbjxomuap.supabase.co';
+			window.SUPABASE_ANON_KEY = 'sb_publishable_eUGGayP0jhOqXqp4LD0QFQ_6UwXAFYN';
+		</script>
+		<script src="./public/app.js"></script>
+	</body>
+	</html>
